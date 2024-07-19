@@ -2,11 +2,9 @@ import pandas as pd
 import csv
 from datetime import datetime
 
-
-
 class CSV:
     CSV_FILE = "finance data.csv"
-    COLUMNS = ["Date", " Amount", " Category", " Description"] 
+    COLUMNS = ["Date", "Amount", "Category", "Description"] 
 
     @classmethod
     def initialize_csv(cls):
@@ -19,18 +17,17 @@ class CSV:
     @classmethod
     def add_entry(cls, date, amount, category, description):
         new_entry = {
-            "date": date,
-            "amount": amount,
-            "category": category,
-            "description": description
+            "Date": date,
+            "Amount": amount,
+            "Category": category,
+            "Description": description
         }
 
-        with open(cls.CSV_FILE, "a", newline = " ") as csvfile:
+        with open(cls.CSV_FILE, "a", newline="") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames = cls.COLUMNS)
             writer.writerow(new_entry)
-            
-        print("Entry added succesfully") 
 
-
+        print("Entry added successfully") 
 
 CSV.initialize_csv()
+CSV.add_entry("20-07-2024", 130.24, "E", "Food")
